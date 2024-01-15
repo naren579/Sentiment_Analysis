@@ -75,11 +75,13 @@ class lemma():
 # if plt == 'Linux':
 #     pathlib.WindowsPath = pathlib.PosixPath
     
-from pathlib import Path
-# Load the pickled model
-model_path =  Path('sentiment_analysis.pkl')
-with open(model_path , 'rb') as file:
-    model = pickle.load(file)
+# from pathlib import Path
+# # Load the pickled model
+# model_path =  Path('sentiment_analysis.pkl')
+# with open(model_path , 'rb') as file:
+#     model = pickle.load(file)
+
+model=pickle.load(open('sentiment_analysis.pkl','rb'))
 
 # with open('sentiment_analysis.pkl', 'rb') as file:
 #     model = pickle.load(file)
