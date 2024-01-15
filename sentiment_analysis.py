@@ -6,7 +6,7 @@ import pandas as pd
 import re,string,unicodedata
 #import nltk
 #nltk.download('stopwords')
-from nltk.corpus import stopwords
+#from nltk.corpus import stopwords
 import spacy
 import pickle
 nlp = spacy.load("en_core_web_sm")
