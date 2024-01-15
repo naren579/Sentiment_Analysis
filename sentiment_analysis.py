@@ -68,6 +68,12 @@ class lemma():
     
     def lemmatise(self,text):
         return " ".join([token.lemma_ for token in self.lemma_model(text)])
+        
+import platform 
+import pathlib 
+plt = platform.system() 
+if plt == 'Linux':
+    pathlib.WindowsPath = pathlib.PosixPath
     
 from pathlib import Path
 # Load the pickled model
