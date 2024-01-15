@@ -4,8 +4,8 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import re,string,unicodedata
-import nltk
-nltk.download('stopwords')
+#import nltk
+#nltk.download('stopwords')
 from nltk.corpus import stopwords
 import spacy
 import pickle
