@@ -69,10 +69,9 @@ class lemma():
     def lemmatise(self,text):
         return " ".join([token.lemma_ for token in self.lemma_model(text)])
     
-import os
-
+from pathlib import Path
 # Load the pickled model
-model_path = os.path.join(os.getcwd(), 'sentiment_analysis.pkl')
+model_path =  Path('sentiment_analysis.pkl')
 with open(model_path , 'rb') as file:
         model = pickle.load(file)
     
