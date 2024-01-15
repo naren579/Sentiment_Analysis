@@ -1,6 +1,6 @@
 
 import streamlit as st
-from sklearn.pipeline import Pipeline
+#from sklearn.pipeline import Pipeline
 import numpy as np
 import pandas as pd
 import re,string,unicodedata
