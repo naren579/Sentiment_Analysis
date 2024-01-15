@@ -71,7 +71,7 @@ class lemma():
     
 from pathlib import Path
 # Load the pickled model
-model_path =  Path('naren579/Sentiment_Analysis')
+model_path =  Path('Sentiment_Analysis')
 with open(model_path/'sentiment_analysis.pkl' , 'rb') as file:
     model = pickle.load(file)
 
