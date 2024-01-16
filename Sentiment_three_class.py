@@ -106,9 +106,9 @@ class lemma:
 # with open(model_path , 'rb') as file:
 #     model = pickle.load(file)
 
-txt_clean=pickle.load(gzip.open('Text_preprocessing.pkl','rb'))
-tf=pickle.load(gzip.open('vectorizer.pkl','rb'))
-model=pickle.load(gzip.open('Sentiment_detector.pkl','rb'))
+txt_clean=pickle.load(gzip.open('Text_preprocessing_3.pkl','rb'))
+tf=pickle.load(gzip.open('vectorizer_3.pkl','rb'))
+model=pickle.load(gzip.open('Sentiment_detector_3.pkl','rb'))
 
 
 # with open('sentiment_analysis.pkl', 'rb') as file:
