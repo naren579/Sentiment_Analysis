@@ -9,7 +9,11 @@ nltk.download('stopwords')
 from nltk.corpus import stopwords
 import spacy
 import pickle
-nlp = spacy.load("en_core_web_sm")
+from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import word_tokenize
+nltk.download('popular')
+nltk.download('wordnet')
+import gzip
 
 user_input = st.text_input("Enter a Sentence", "Default Text")
 button_clicked = st.button('Predict')
@@ -52,40 +56,59 @@ class stopwords():
         text= ' '.join([x for x in text.split() if x not in stopwords])
         return text
 
-class lemma():
-    
-    def __init__(self,lemma_model):
-        self.lemma_model=lemma_model
-        
-    def fit(self,X,y=None):
+class lemma:
+    def __init__(self):
+        self.lemmatizer = WordNetLemmatizer()
+
+    def fit(self, X, y=None):
         return self
-    
-    def transform(self,X):
+
+    def transform(self, X):
         if type(X) == str:
-            return [self.lemmatise(X)]
+            return [self.lemmatize(X)]
         else:
-            return [self.lemmatise(text) for text in X]
+            return [self.lemmatize(text) for text in X]
+
+    def lemmatize(self, text):
+        tokens = word_tokenize(text)
+        lemmatized_tokens = [self.lemmatizer.lemmatize(token) for token in tokens]
+        lemmatized_text = " ".join(lemmatized_tokens)
+        return lemmatized_text
+
+# class lemma():
     
-    def lemmatise(self,text):
-        return " ".join([token.lemma_ for token in self.lemma_model(text)])
+#     def __init__(self,lemma_model):
+#         self.lemma_model=lemma_model
+        
+#     def fit(self,X,y=None):
+#         return self
+    
+#     def transform(self,X):
+#         if type(X) == str:
+#             return [self.lemmatise(X)]
+#         else:
+#             return [self.lemmatise(text) for text in X]
+    
+#     def lemmatise(self,text):
+#         return " ".join([token.lemma_ for token in self.lemma_model(text)])
         
 # import platform 
 # import pathlib 
 # plt = platform.system() 
 # if plt == 'Linux':
 #     pathlib.WindowsPath = pathlib.PosixPath
-import pathlib
-temp = pathlib.WindowsPath
-pathlib.WindowsPath = pathlib.PosixPath
-from pathlib import Path
+# import pathlib
+# temp = pathlib.WindowsPath
+# pathlib.WindowsPath = pathlib.PosixPath
+# from pathlib import Path
 # # Load the pickled model
 # model_path =  Path('sentiment_analysis.pkl')
 # with open(model_path , 'rb') as file:
 #     model = pickle.load(file)
 
-txt_clean=pickle.load(open(Path('Text_preprocessing.pkl'),'rb'))
-tf=pickle.load(open(Path('vectorizer.pkl'),'rb'))
-model=pickle.load(open(Path('Sentiment_detector.pkl'),'rb'))
+txt_clean=pickle.load(gzip.open('Text_preprocessing.pkl','rb'))
+tf=pickle.load(gzip.open('vectorizer.pkl','rb'))
+model=pickle.load(gzip.open('Sentiment_detector.pkl','rb'))
 
 
 # with open('sentiment_analysis.pkl', 'rb') as file:
