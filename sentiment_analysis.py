@@ -74,9 +74,9 @@ class lemma():
 # plt = platform.system() 
 # if plt == 'Linux':
 #     pathlib.WindowsPath = pathlib.PosixPath
-# import pathlib
-# temp = pathlib.WindowsPath
-# pathlib.WindowsPath = pathlib.PosixPath
+import pathlib
+temp = pathlib.WindowsPath
+pathlib.WindowsPath = pathlib.PosixPath
 from pathlib import Path
 # # Load the pickled model
 # model_path =  Path('sentiment_analysis.pkl')
