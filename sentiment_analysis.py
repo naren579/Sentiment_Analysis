@@ -77,15 +77,15 @@ class lemma():
 # import pathlib
 # temp = pathlib.WindowsPath
 # pathlib.WindowsPath = pathlib.PosixPath
-# from pathlib import Path
+from pathlib import Path
 # # Load the pickled model
 # model_path =  Path('sentiment_analysis.pkl')
 # with open(model_path , 'rb') as file:
 #     model = pickle.load(file)
 
-txt_clean=pickle.load(open('Text_preprocessing.pkl','rb'))
-tf=pickle.load(open('vectorizer.pkl','rb'))
-model=pickle.load(open('Sentiment_detector.pkl','rb'))
+txt_clean=pickle.load(open(Path('Text_preprocessing.pkl'),'rb'))
+tf=pickle.load(open(Path('vectorizer.pkl'),'rb'))
+model=pickle.load(open(Path('Sentiment_detector.pkl'),'rb'))
 
 
 # with open('sentiment_analysis.pkl', 'rb') as file:
