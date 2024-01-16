@@ -106,9 +106,9 @@ class lemma:
 # with open(model_path , 'rb') as file:
 #     model = pickle.load(file)
 
-txt_clean=pickle.load(gzip.open('Text_preprocessing_3.pkl','rb'))
-tf=pickle.load(gzip.open('vectorizer_3.pkl','rb'))
-model=pickle.load(gzip.open('Sentiment_detector_3.pkl','rb'))
+txt_clean=pickle.load(gzip.open('Text_preprocessing.pkl','rb'))
+tf=pickle.load(gzip.open('vectorizer.pkl','rb'))
+model=pickle.load(gzip.open('Sentiment_detector.pkl','rb'))
 
 
 # with open('sentiment_analysis.pkl', 'rb') as file:
@@ -121,11 +121,9 @@ if button_clicked:
     if pred==1:
         st.markdown("# The Sentence Seems to be POSITIVE")
         st.image('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1C4VPejYDvywKmk12MHyeH1z0ubr0E1A8lg&usqp=CAU')
-    elif pred==0:
+    else: 
         st.markdown("# The Sentence Seems to be NEGATIVE")
         st.image('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbbuDRvaFBgko-Kox-TUykBQFIqGU7p5SWt5kFoKK1p9B_LQWlPbswDfiJH6RpEGfqQbY&usqp=CAU')
-    else:
-        st.markdown("# The Sentence Seems to be NEUTRAL")
-        st.image('https://assets-global.website-files.com/5bd07788d8a198cafc2d158a/61c49a62dccfe690ca3704be_Screen-Shot-2021-12-23-at-10.44.27-AM.jpg')
+    
 
 
