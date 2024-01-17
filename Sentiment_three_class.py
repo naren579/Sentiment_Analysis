@@ -123,7 +123,7 @@ if button_clicked:
         st.image('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1C4VPejYDvywKmk12MHyeH1z0ubr0E1A8lg&usqp=CAU')
     elif pred==0:
         st.markdown("# The Sentence Seems to be NEGATIVE")
-        st.image('https://data.textstudio.com/output/sample/animated/1/9/6/5/negative-17-15691.gif')
+        st.image('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbbuDRvaFBgko-Kox-TUykBQFIqGU7p5SWt5kFoKK1p9B_LQWlPbswDfiJH6RpEGfqQbY&usqp=CAU')
     else:
         st.markdown("# The Sentence Seems to be NEUTRAL")
         st.image('https://assets-global.website-files.com/5bd07788d8a198cafc2d158a/61c49a62dccfe690ca3704be_Screen-Shot-2021-12-23-at-10.44.27-AM.jpg')
