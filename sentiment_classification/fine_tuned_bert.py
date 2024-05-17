@@ -1,0 +1,46 @@
+import torch
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+import numpy as np
+import os
+import streamlit as st
+st.set_page_config(layout="wide")
+st.title('SENTIMENT CLASSIFICATION')
+
+def preprocessing(input_text,tokenizer):
+  return tokenizer.encode_plus(input_text,
+                               add_special_tokens=True,
+                               max_length=32,pad_to_max_length=True,return_attention_mask=True)
+
+from huggingface_hub import HfApi
+
+os.environ['HUGGINGFACE_TOKEN'] = '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'
+
+model_name = "Naren579/BERT-sentiment-classification"
+
+model = AutoModelForSequenceClassification.from_pretrained(model_name)
+tokenizer=AutoTokenizer.from_pretrained(model_name,trust_remote_code=True)
+
+new_sentence=st.text_input('Enter here:')
+# We need Token IDs and Attention Mask for inference on the new sentence
+input_ids = []
+attention_masks = []
+
+# Apply the tokenizer
+encoding = preprocessing(new_sentence, tokenizer)
+
+# Extract IDs and Attention Mask
+input_ids.append(encoding['input_ids'])
+attention_masks.append(encoding['attention_mask'])
+input_ids = torch.tensor(input_ids)
+attention_masks = torch.tensor(attention_masks)
+
+# Forward pass, calculate logit predictions
+if st.button('GO'):
+  with torch.no_grad():
+    output = model(input_ids, token_type_ids = None, attention_mask = attention_masks)
+    if np.argmax(output.logits.cpu().numpy())==0:
+      st.markdown('positive')
+    elif np.argmax(output.logits.cpu().numpy())==1:
+      st.markdown('negative')
+    else:
+      st.markdown('neutral')
