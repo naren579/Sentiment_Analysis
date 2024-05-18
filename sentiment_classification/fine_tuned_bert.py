@@ -13,7 +13,8 @@ def preprocessing(input_text,tokenizer):
 
 from huggingface_hub import HfApi
 
-os.environ['HUGGINGFACE_TOKEN'] = st.secrets["HUGGINGFACE_TOKEN"]
+with st.sidebar:
+  os.environ['HUGGINGFACE_TOKEN'] = st.text_input('Enter your huggingface api key here')
 model_name = "Naren579/BERT-sentiment-classification"
 
 model = AutoModelForSequenceClassification.from_pretrained(model_name)
